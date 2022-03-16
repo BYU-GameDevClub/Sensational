@@ -349,21 +349,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveVal: {x: 0, y: 0}
   moveSpeed: 10
-  PlayerActionMap:
-    m_Name: Player
-    m_Id: fb83b897-8b00-48f7-acac-78606ebe0b47
-    m_Asset: {fileID: 0}
-    m_Actions: []
-    m_Bindings: []
-  MoveAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: ded5d023-e72e-4ceb-9522-69544c11872e
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!212 &1592076127
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -442,7 +427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: f5bd5e10abb5c1540a2182f100d86a2e, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -456,13 +441,12 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 9421f0c03b1a6ef48b94f862cd33d4c3, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1592076126}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: SetMoveDirection
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -510,9 +494,25 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: be64e09e-4c07-4a56-84d6-93aaac523666
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1592076126}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6d846deb-568d-49bf-9bcf-7aad29188857
+    m_ActionName: PhillipMap/Interact[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: PhillipMap
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!61 &1592076130
