@@ -7,6 +7,8 @@ public class ScentAssign : MonoBehaviour
     [HideInInspector]
     public ParticleSystem scentEffect;
 
+    public int scentStrength = 10;
+
     public enum Smell // your custom enumeration
     {
         Stinky,
@@ -54,6 +56,15 @@ public class ScentAssign : MonoBehaviour
     {
         var grad = scentEffect.colorOverLifetime;
         grad.color = new ParticleSystem.MinMaxGradient(newColor, Color.clear);
+    }
+
+    public void setActive(bool active)
+    {
+        if (active) scentEffect.Play();
+        else {
+            scentEffect.Stop();
+            scentEffect.Clear();
+            }
     }
 
     public void CreateChild()
