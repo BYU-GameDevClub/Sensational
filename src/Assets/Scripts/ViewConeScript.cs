@@ -23,6 +23,11 @@ public class ViewConeScript : MonoBehaviour
         meshFilter.mesh = viewMesh;
     }
 
+    private void Update()
+    {
+        ShowViewCone();
+    }
+
     void ShowViewCone()
     {
         int rayNum = Mathf.RoundToInt(halfConeAngle) * 2;
@@ -49,8 +54,8 @@ public class ViewConeScript : MonoBehaviour
 
     Vector3 ViewCast(float angle)
     {
-        float angleToZero = Mathf.Acos(Vector3.Dot(Vector3.forward, transform.forward) / (Vector3.forward.magnitude * transform.forward.magnitude));
-        if(transform.forward.x >= 0)
+        float angleToZero = Mathf.Acos(Vector3.Dot(Vector3.up, transform.up) / (Vector3.up.magnitude * transform.up.magnitude));
+        if(transform.up.x >= 0)
         {
             angle += angleToZero * Mathf.Rad2Deg;
         }
@@ -58,13 +63,12 @@ public class ViewConeScript : MonoBehaviour
         {
             angle -= angleToZero * Mathf.Rad2Deg;
         }
-        Vector3 direction = new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), 0, Mathf.Cos(Mathf.Deg2Rad * angle));
+        Vector3 direction = new Vector3(Mathf.Sin(Mathf.Deg2Rad * angle), Mathf.Cos(Mathf.Deg2Rad * angle), 0);
         direction = direction.normalized;
-        RaycastHit hit;
-        Physics.Raycast(transform.position, direction, out hit, viewConeDistance);
-        if(hit.point != Vector3.zero)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, viewConeDistance);
+        if(hit.point != Vector2.zero)
         {
-            return hit.point;
+            return new Vector3(hit.point.x, hit.point.y, 0);
         }
         else
         {
