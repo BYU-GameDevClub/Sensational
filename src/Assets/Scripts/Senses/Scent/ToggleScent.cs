@@ -7,8 +7,9 @@ public class ToggleScent : MonoBehaviour
     public bool scentActive;
     public Camera scentCamera;
     public Camera sightCamera;
+    public Transform player;
 
-    [Tooltip("1-20")]
+    [Range(0, 20)]
     public int scentLevel = 5;
 
     // Start is called before the first frame update
@@ -29,7 +30,7 @@ public class ToggleScent : MonoBehaviour
         scentCamera.gameObject.SetActive(scentActive);
         foreach(ScentAssign sa in FindObjectsOfType<ScentAssign>())
         {
-            sa.setActive(scentActive);
+            sa.setActive(scentActive, player, scentLevel);
         }
         scentCamera.orthographicSize = scentLevel;
     }
